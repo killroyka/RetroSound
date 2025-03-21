@@ -20,3 +20,4 @@ DATABASES = {
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
+print(ALLOWED_HOSTS)
