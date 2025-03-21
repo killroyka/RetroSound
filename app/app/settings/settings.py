@@ -22,4 +22,3 @@ DATABASES = {
 MIDDLEWARE = MIDDLEWARE + [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
-print(INSTALLED_APPS)
