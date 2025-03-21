@@ -4,7 +4,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = 0
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS += os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 CSRF_TRUSTED_ORIGINS = ["http://localhost:1337"]
 INTERNAL_IPS = [
     "127.0.0.1",

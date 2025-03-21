@@ -1,7 +1,6 @@
 from .default import *
 
-INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar', 'drf_spectacular']
-REST_FRAMEWORK['DEFAULT_SCHEMA_CLASS'] = 'drf_spectacular.openapi.AutoSchema'
+INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar']
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Retro Sound API',
     'DESCRIPTION': 'Api for selling second handed vinyl',
