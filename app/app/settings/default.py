@@ -13,7 +13,7 @@ SECRET_KEY = "hehe"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", '0.0.0.0']
+ALLOWED_HOSTS = ["localhost", '0.0.0.0', 'http://0.0.0.0:8000']
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 # Application definition
