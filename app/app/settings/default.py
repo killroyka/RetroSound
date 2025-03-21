@@ -13,7 +13,7 @@ SECRET_KEY = "hehe"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", '0.0.0.0']
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 # Application definition
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     # apps
     "authentication.apps.AuthenticationConfig",
     "products.apps.ProductsConfig",
+    "favorite.apps.FavoriteConfig",
     # /apps
     'rest_framework',
     'rest_framework_simplejwt',

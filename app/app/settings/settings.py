@@ -1,9 +1,14 @@
 from .default import *
-import os
 
-INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar']
-
-
+INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar', 'drf_spectacular']
+REST_FRAMEWORK['DEFAULT_SCHEMA_CLASS'] = 'drf_spectacular.openapi.AutoSchema'
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Retro Sound API',
+    'DESCRIPTION': 'Api for selling second handed vinyl',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
@@ -17,3 +22,4 @@ DATABASES = {
 MIDDLEWARE = MIDDLEWARE + [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
+print(INSTALLED_APPS)

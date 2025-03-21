@@ -1,7 +1,9 @@
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions, viewsets
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from app.permissions import IsOwnerOrReadOnly
 from authentication.models import User
 from authentication.serializers import RegisterSerializer, UserSerializer
 
@@ -20,14 +22,24 @@ class UserRegistrationView(generics.GenericAPIView):
             token = RefreshToken.for_user(user)
 
             print(token.token)
-            return Response({"data": UserSerializer(user).data, "access": str(token.access_token), "refresh": str(token)},
-                            status=status.HTTP_201_CREATED)
+            return Response(
+                {"data": UserSerializer(user).data, "access": str(token.access_token), "refresh": str(token)},
+                status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class UserProfileView(generics.RetrieveAPIView):
+
+class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     model = User
+    permission_classes = (permissions.IsAuthenticated, IsOwnerOrReadOnly)
+
+    @action(
+        detail=False,
+        methods=["get"],
+        permission_classes=(permissions.IsAuthenticated, IsOwnerOrReadOnly),
+        url_path="profile",
+    )
     def get(self, request, *args, **kwargs):
         user = request.user
         data = UserSerializer(user).data
