@@ -13,9 +13,9 @@ SECRET_KEY = "hehe"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", '0.0.0.0', 'http://0.0.0.0:8000', "http://194.87.76.7:1337/"]
+ALLOWED_HOSTS = ["localhost", '0.0.0.0', '0.0.0.0', "194.87.76.7:1337/", '0.0.0.0:8000']
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
-
+print(ALLOWED_HOSTS)
 # Application definition
 
 INSTALLED_APPS = [
